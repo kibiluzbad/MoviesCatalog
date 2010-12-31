@@ -1,0 +1,12 @@
+- @title = "- Whislist"
+%h1 Whishlist
+.col_16.col
+  - @whishlists.each do |whishlist|
+    .movie_name{:class=>"box_shadow",:style=>"width:940px"}
+      = whishlist.name
+      = link_to 'Downloaded', whishlist, :confirm => 'Are you sure?', :method => :delete, :class=>"right"
+  - if @whishlists.nil? || @whishlists.empty?
+    %blockquote Sorry! No itens...
+  %br
+  
+  = link_to 'New movie', new_whishlist_path

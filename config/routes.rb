@@ -1,4 +1,6 @@
 MoviesCatalog::Application.routes.draw do
+  resources :whishlists
+
   root :to => "movies#index"
   resources :movies
 

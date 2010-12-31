@@ -4,8 +4,8 @@
     %title 
       Movies Catalog 
       = @title      
-    = stylesheet_link_tag "reset","general","grid", "style"
-    = javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js","html5", "jquery.raty.min","application"
+    = stylesheet_link_tag "reset","general","grid","css3","style"
+    = javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js","rails","html5", "jquery.raty.min","application"
     = csrf_meta_tag
   %body
     .row
@@ -17,7 +17,7 @@
         .clear
         = render "layouts/menu"
       .clear
-      %section.content.col
+      %section.content
         = yield
     .clear{:style=>"height:10px; border-bottom:1px solid #ccc;"}
   %footer.row

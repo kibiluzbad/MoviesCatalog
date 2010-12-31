@@ -1,42 +1,44 @@
 - @title = "- #{@movie.title} - #{@movie.year}"
 %article
   %h1= "#{@movie.title} - #{@movie.year}"
-  = image_tag @movie.picture_path, {:class=>"left",:style=>"margin-right:10px"} unless @movie.picture_path.nil?
-  = link_to @movie.url, @movie.url, {:target => "_blank"}
-  %blockquote= @movie.tagline
-  %p
-    = @movie.plot
+  .col_4.col
+    = image_tag @movie.picture_path, {:class=>"left",:style=>"margin-right:10px"} unless @movie.picture_path.nil?
+    
+  .col_12.col
+    = link_to @movie.url, @movie.url, {:target => "_blank"}
+    %blockquote= @movie.tagline
+    %p
+      = @movie.plot
 
-  %h3 Rating
-  %p
-    %span.rating{:id=>@movie.imdbid,"data-rating"=>@movie.rating}
-    %br
-    = "#{@movie.rating} / #{@movie.votes}"
+    %h3 Rating
+    %p
+      %span.rating{:id=>@movie.imdbid,"data-rating"=>@movie.rating}
+      %br
+      = "#{@movie.rating} / #{@movie.votes}"
 
-  - unless @movie.top250 == 0
-    %h3 Top250
-    %p= "##{@movie.top250}"
+    - unless @movie.top250 == 0
+      %h3 Top250
+      %p= "##{@movie.top250}"
 
-  %h3 Runtime
-  %p= "#{@movie.runtime}"
+    %h3 Runtime
+    %p= "#{@movie.runtime}"
 
-  %h3 Diretors
-  %ul.directors
-    - @movie.directors.each do |director|
-      = render :partial => 'director', :locals =>{:director => director}
+    %h3 Diretors
+    %ul.directors
+      - @movie.directors.each do |director|
+        = render :partial => 'director', :locals =>{:director => director}
 
-  %h3 Writers
-  %ul.writers
-    - @movie.writers.each do |writer|
-      = render :partial => 'director', :locals =>{:director => writer}
+    %h3 Writers
+    %ul.writers
+      - @movie.writers.each do |writer|
+        = render :partial => 'director', :locals =>{:director => writer}
       
-  %h3 Cast
-  %ul.cast
-    - @movie.characters.each do |character|
-      = render :partial => 'character', :locals =>{:character => character}
-  
-  %h3 Recomendations
-  %ul.recomendations
-    - @movie.recomendations.each do |recomendation|
-      = render :partial => 'recomendation', :locals =>{:recomendation => recomendation}
-        
+    %h3 Cast
+    %ul.cast
+      - @movie.characters.each do |character|
+        = render :partial => 'character', :locals =>{:character => character}
+    .clear
+    %h3 Recomendations
+    %ul.recomendations
+      - @movie.recomendations.each do |recomendation|
+        = render :partial => 'recomendation', :locals =>{:recomendation => recomendation}        

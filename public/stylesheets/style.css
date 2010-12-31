@@ -79,3 +79,28 @@ footer{
 header .box{
   padding-top:30px;
 }
+
+ul.cast{
+  list-style-type:none;
+}
+
+ul.cast li{
+  display:inline;   
+  width:300px;  
+  float:left;
+}
+
+ul.recomendations{
+  list-style-type:none;
+}
+
+ul.recomendations li{
+  display:inline;   
+  width:300px;  
+  float:left;
+}
+
+.movie_name{
+  height:25px;   
+  line-height:25px;
+}

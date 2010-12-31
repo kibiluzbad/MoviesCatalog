@@ -1,9 +1,11 @@
 %nav
   %ul
-    %li.active
-      = link_to "Home", root_path
-    %li
-      = link_to "Wishlist", "#"
+    != "movies" == params[:controller] ? "<li class='active'>" : "<li>"
+    = link_to "Home", root_path
+    != "</li>"
+    != "whishlists" == params[:controller] ? "<li class='active'>" : "<li>"
+    = link_to "Wishlist", whishlists_path
+    != "</li>"
     %li
       = link_to "Status", "#"
       

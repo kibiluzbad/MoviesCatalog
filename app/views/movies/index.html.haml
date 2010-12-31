@@ -1,7 +1,8 @@
-%article
-  = render :partial => "info"
-  = render :partial => "incomplete"
-  %h1 Top 10
-  = render @movies unless @movies.nil? || @movies.empty?
-  %blockquote= "Sorry! No movies..."if @movies.nil? || @movies.empty?
+.col_16.col
+  %article
+    = render :partial => "info"
+    = render :partial => "incomplete"
+    %h1 Top 10
+    = render @movies unless @movies.nil? || @movies.empty?
+    %blockquote= "Sorry! No movies..."if @movies.nil? || @movies.empty?
   
