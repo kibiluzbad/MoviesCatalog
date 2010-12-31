@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  actor: MyString
+  url: MyString
+  picture_path: MyString
+  imdbid: MyString
+
+two:
+  name: MyString
+  actor: MyString
+  url: MyString
+  picture_path: MyString
+  imdbid: MyString

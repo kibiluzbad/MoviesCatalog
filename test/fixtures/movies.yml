@@ -1,0 +1,25 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  rating: 1
+  votes: 1.5
+  title: MyString
+  plot: MyText
+  tagline: MyString
+  runtime: MyString
+  top250: 1
+  year: MyString
+  picture_path: MyString
+  imdbid: MyString
+
+two:
+  rating: 1
+  votes: 1.5
+  title: MyString
+  plot: MyText
+  tagline: MyString
+  runtime: MyString
+  top250: 1
+  year: MyString
+  picture_path: MyString
+  imdbid: MyString

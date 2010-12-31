@@ -1,0 +1,4 @@
+= form_tag(movies_path, :method => :get) do
+  = text_field_tag("query",@query)
+  = submit_tag("Search", {:class=>"submit"})
+
