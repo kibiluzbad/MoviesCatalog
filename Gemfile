@@ -16,6 +16,7 @@ gem 'railties',           RAILS_VERSION, :require => 'rails'
 
 gem 'dm-rails',          '~> 1.0.3'
 gem 'dm-sqlite-adapter', DM_VERSION
+gem 'dm-postgres-adapter', DM_VERSION
 
 # You can use any of the other available database adapters.
 # This is only a small excerpt of the list of all available adapters
@@ -41,8 +42,6 @@ gem 'dm-aggregates',        DM_VERSION
 gem 'dm-timestamps',        DM_VERSION
 gem 'dm-observer',          DM_VERSION
 gem 'dm-pager', '1.1.0'
-
-
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
