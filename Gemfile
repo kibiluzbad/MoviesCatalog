@@ -16,7 +16,6 @@ gem 'railties',           RAILS_VERSION, :require => 'rails'
 
 gem 'dm-rails',          '~> 1.0.3'
 gem 'dm-sqlite-adapter', DM_VERSION
-gem 'dm-postgres-adapter', DM_VERSION
 
 # You can use any of the other available database adapters.
 # This is only a small excerpt of the list of all available adapters
