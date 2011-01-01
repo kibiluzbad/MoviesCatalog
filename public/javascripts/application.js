@@ -11,4 +11,8 @@ $(document).ready(function(){
    	$('.rating').each(function(){
    	    $(this).raty.start($(this).attr('data-rating'),"#" + $(this).attr('id'));
    	});
+   	
+   	$(".pager .active a").click(function() { 
+        return false;
+   	});
 });

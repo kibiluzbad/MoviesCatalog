@@ -2,7 +2,8 @@
   %article
     = render :partial => "info"
     = render :partial => "incomplete"
-    %h1 Top 10
+    %h1 Movies
     = render @movies unless @movies.nil? || @movies.empty?
+    != @movies.pager.to_html("/movies?query=#{CGI.escape(@query)}") if @movies && @movies.pager
     %blockquote= "Sorry! No movies..."if @movies.nil? || @movies.empty?
   

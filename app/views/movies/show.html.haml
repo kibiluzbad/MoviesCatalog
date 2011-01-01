@@ -1,14 +1,15 @@
 - @title = "- #{@movie.title} - #{@movie.year}"
-%article
+%article.movie
   %h1= "#{@movie.title} - #{@movie.year}"
-  .col_4.col
-    = image_tag @movie.picture_path, {:class=>"left",:style=>"margin-right:10px"} unless @movie.picture_path.nil?
-    
   .col_12.col
     = link_to @movie.url, @movie.url, {:target => "_blank"}
     %blockquote= @movie.tagline
     %p
       = @movie.plot
+      
+    %ul.genres
+      - @movie.genres.each do |genre|
+        %li= genre.description
 
     %h3 Rating
     %p
@@ -41,4 +42,6 @@
     %h3 Recomendations
     %ul.recomendations
       - @movie.recomendations.each do |recomendation|
-        = render :partial => 'recomendation', :locals =>{:recomendation => recomendation}        
+        = render :partial => 'recomendation', :locals =>{:recomendation => recomendation}
+  .col_4.col
+    = image_tag @movie.picture_path, {:class=>"left",:style=>"margin-right:10px"} unless @movie.picture_path.nil?

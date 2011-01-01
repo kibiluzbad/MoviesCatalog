@@ -6,6 +6,7 @@
     != "whishlists" == params[:controller] ? "<li class='active'>" : "<li>"
     = link_to "Wishlist", whishlists_path
     != "</li>"
-    %li
-      = link_to "Status", "#"
+    != "status" == params[:controller] ? "<li class='active'>" : "<li>"
+    = link_to "Status", status_path
+    != "</li>"
       

@@ -73,7 +73,7 @@ footer { font-size:.8em; }
 }
 
 footer{
- border-top:1px dotted #aaa;   
+ border-top:1px dashed #ccc;   
 }
 
 header .box{
@@ -103,4 +103,44 @@ ul.recomendations li{
 .movie_name{
   height:25px;   
   line-height:25px;
+}
+
+ul.genres li{ 
+  display:inline;
+  border: 1px solid #ccc;
+  padding: 5px;
+}
+.movie h3{
+ margin-top:10px;   
+}
+
+ul.pager{
+ Text-align:center;
+}
+
+ul.pager li {
+  display:inline;
+  padding:3px;
+  border: 1px solid #ccc;
+  margin-left:2px;
+}
+
+ul.pager li.active{
+  background-color:#aaa;
+}
+
+ul.pager li.active a{
+  color:#fff;
+  text-decoration:none;
+  cursor: default;
+}
+
+ul.pager li.active a:hover{
+  color:#fff;
+  text-decoration:none;
+}
+
+ul.pager li.active a:visited{
+  color:#fff;
+  text-decoration:none;
 }

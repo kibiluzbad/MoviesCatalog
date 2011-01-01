@@ -16,6 +16,7 @@ class Movie
   property :created_at    , DateTime
   
   has n, :alternative_titles
+
   has n, :characters      , :through => Resource
   has n, :directors       , :through => Resource
   has n, :genres          , :through => Resource
@@ -34,8 +35,14 @@ class Movie
     all(:complete => false,:order => [:created_at.desc])
   end
   
-  def self.filter(query)
-    all(:title.like => "%#{query}%",:order => [:rating.desc, :top250])
+  def self.filter(query,page = 1)
+    code = ""
+    query.each do |item| 
+      code += " & " unless code.empty?
+      code += "page('#{item[0]}'=>'#{item[1]}',:order => [:rating.desc, :top250],:per_page => 10,:page=>#{page})"  
+    end
+    RAILS_DEFAULT_LOGGER.info(code)
+    eval code
   end
   
 end

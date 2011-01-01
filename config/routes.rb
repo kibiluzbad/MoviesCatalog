@@ -1,8 +1,10 @@
 MoviesCatalog::Application.routes.draw do
-  resources :whishlists
+  resources :status, :only => [:index]
 
-  root :to => "movies#index"
-  resources :movies
+  resources :whishlists, :except => [:show,:edit,:update]
+
+  root :to => "movies#index", :only => [:index]
+  resources :movies, :only => [:index,:show]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
