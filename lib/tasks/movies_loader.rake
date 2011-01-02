@@ -1,49 +1,3 @@
-def update_attributes(movie, hash = {})
-    
-  movie.title = hash["title"]
-  movie.rating = hash["rating"]
-  movie.votes = hash["votes"]
-  movie.plot = hash["plot"]
-  movie.tagline = hash["tagline"]
-  movie.runtime = hash["runtime"]
-  movie.top250 = hash["top250"]
-  movie.year = hash["year"]
-  movie.picture_path = hash["picture_path"]
-  movie.imdbid = hash["imdbid"]
-  movie.complete = true
-  
-  hash["recomendations"].collect do |r| 
-    saved = Recomendation.first_or_create({:imdbid => r["imdbid"]})
-    saved.update_attributes(r)
-    movie.recomendations << saved
-  end
-  
-  hash["cast"].collect do |r| 
-    saved = Character.first_or_create({:imdbid => r["imdbid"]})    
-    saved.update_attributes(r)
-    movie.characters << saved
-  end
-  
-  hash["directors"].collect do |r| 
-    saved = Director.first_or_create({:imdbid => r["imdbid"]})
-    saved.update_attributes(r)
-    movie.directors << saved
-  end
-  
-  hash["genres"].collect do |r| 
-    saved = Genre.first_or_create({:description => r, :url => "http://www.imdb.com/genre/#{r}"})
-    movie.genres << saved
-  end
-  
-  hash["writers"].collect do |r| 
-    saved = Writer.first_or_create({:imdbid => r["imdbid"]})
-    saved.update_attributes(r)
-    movie.writers << saved
-  end
-  
-  movie.save!
-end
-
 namespace :movies do
 	desc "Search movies using the movie provider by query."	
 	task :search, [:query] => :environment do |t,args|
@@ -66,7 +20,7 @@ namespace :movies do
 	  movie = provider.get_movie(args.imdbid)
 	  if(movie["error"].nil?)
 	    m = Movie.first_or_create({:imdbid => args.imdbid})
-	    update_attributes(m,movie)
+	    m.update_from(movie)
       puts "Movie #{m.title} saved!"
     else
       puts "Movie not saved!"
@@ -88,4 +42,3 @@ namespace :movies do
     end
   end
 end
-
