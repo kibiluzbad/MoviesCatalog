@@ -11,7 +11,7 @@ class Movie
   property :top250        , Integer
   property :year          , String, :length => 25
   property :picture_path  , String, :length => 255
-  property :complete      , Boolean
+  property :complete      , Integer
   property :download_name , String, :length => 255
   property :created_at    , DateTime
   
