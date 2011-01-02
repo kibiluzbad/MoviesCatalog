@@ -65,7 +65,16 @@ footer { font-size:.8em; }
 
 .movie .directors li{
   display:inline;
-    
+  margin-left: 5px;
+}
+
+.movie .writers{
+  list-style-type:none;    
+}
+
+.movie .writers li{
+  display:inline;
+  margin-left: 5px;
 }
 
 .movie_content{
