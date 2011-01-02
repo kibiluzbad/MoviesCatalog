@@ -4,15 +4,15 @@ class Movie
   property :imdbid        , String, :key => true
   property :rating        , Float
   property :votes         , Float
-  property :title         , String
+  property :title         , String, :length => 255
   property :plot          , Text
-  property :tagline       , String
-  property :runtime       , String
+  property :tagline       , String, :length => 2000
+  property :runtime       , String, :length => 255
   property :top250        , Integer
-  property :year          , String
+  property :year          , String, :length => 25
   property :picture_path  , String, :length => 255
   property :complete      , Boolean
-  property :download_name , String
+  property :download_name , String, :length => 255
   property :created_at    , DateTime
   
   has n, :alternative_titles
