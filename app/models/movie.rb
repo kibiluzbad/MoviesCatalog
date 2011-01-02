@@ -28,11 +28,11 @@ class Movie
   end
   
   def self.top10
-    all(:complete => true, :order => [:rating.desc, :top250], :limit => 10)
+    all(:complete => 1, :order => [:rating.desc, :top250], :limit => 10)
   end
   
   def self.incomplete
-    all(:complete => false,:order => [:created_at.desc])
+    all(:complete => 0,:order => [:created_at.desc])
   end
   
   def self.filter(query,page = 1)
