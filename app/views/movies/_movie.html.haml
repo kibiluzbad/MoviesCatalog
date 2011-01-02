@@ -11,4 +11,7 @@
         = render :partial => 'director', :locals =>{:director => director}        
     %span.rating{:id=>movie.imdbid,"data-rating"=>movie.rating}
     = "(#{movie.rating} / #{movie.votes})"
+    %ul.genres{:class=>"right"}
+      - movie.genres.each do |genre|
+        %li= genre.description
 

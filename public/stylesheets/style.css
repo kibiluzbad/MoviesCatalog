@@ -109,6 +109,7 @@ ul.genres li{
   display:inline;
   border: 1px solid #ccc;
   padding: 5px;
+  margin-left:5px;
 }
 .movie h3{
  margin-top:10px;   
