@@ -45,3 +45,5 @@
         = render :partial => 'recomendation', :locals =>{:recomendation => recomendation}
   .col_4.col
     = image_tag @movie.picture_path, {:class=>"left",:style=>"margin-right:10px"} unless @movie.picture_path.nil?
+    = #TODO: Find a better way!
+    != "<script>$(document).ready(function(){$('##{@movie.imdbid}').raty({readOnly: true,path: '/images',number: 10,showHalf:true,start: #{@movie.rating}});});</script>"
