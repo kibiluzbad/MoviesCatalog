@@ -14,4 +14,6 @@
     %ul.genres{:class=>"right"}
       - movie.genres.each do |genre|
         %li= genre.description
+    = #TODO: Find a better way!
+    != "<script>$(document).ready(function(){$('##{movie.imdbid}').raty({readOnly: true,path: '/images',number: 10,showHalf:true,start: #{movie.rating}});});</script>"
 
