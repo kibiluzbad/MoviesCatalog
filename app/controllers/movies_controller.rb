@@ -4,6 +4,10 @@ class MoviesController < ApplicationController
     @movies = Movie.top10 if @query.nil? || @query.empty?    
     @movies = Movie.filter(parse(@query), params[:page].nil? ? 1 : params[:page].to_i) unless @query.nil? || @query.empty?
     @incomplete = Movie.incomplete
+    
+    if request.xhr?
+      render :partial => @movies
+    end
   end
 
   def show

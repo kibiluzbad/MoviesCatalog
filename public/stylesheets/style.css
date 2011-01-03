@@ -126,6 +126,7 @@ ul.genres li{
 
 ul.pager{
  Text-align:center;
+ display:none;
 }
 
 ul.pager li {
