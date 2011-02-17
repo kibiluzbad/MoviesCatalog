@@ -47,48 +47,47 @@ class Movie
   
   def update_from(hash = {})
     
-  self.title = hash["title"]
-  self.rating = hash["rating"]
-  self.votes = hash["votes"]
-  self.plot = hash["plot"]
-  self.tagline = hash["tagline"]
-  self.runtime = hash["runtime"]
-  self.top250 = hash["top250"]
-  self.year = hash["year"]
-  self.picture_path = hash["picture_path"]
-  self.imdbid = hash["imdbid"]
-  self.complete = true
-  
-  hash["recomendations"].collect do |r| 
-    saved = Recomendation.first_or_create({:imdbid => r["imdbid"]})
-    saved.update_attributes(r)
-    self.recomendations << saved
-  end
-  
-  hash["cast"].collect do |r| 
-    saved = Character.first_or_create({:imdbid => r["imdbid"]})    
-    saved.update_attributes(r)
-    self.characters << saved
-  end
-  
-  hash["directors"].collect do |r| 
-    saved = Director.first_or_create({:imdbid => r["imdbid"]})
-    saved.update_attributes(r)
-    self.directors << saved
-  end
-  
-  hash["genres"].collect do |r| 
-    saved = Genre.first_or_create({:description => r, :url => "http://www.imdb.com/genre/#{r}"})
-    self.genres << saved
-  end
-  
-  hash["writers"].collect do |r| 
-    saved = Writer.first_or_create({:imdbid => r["imdbid"]})
-    saved.update_attributes(r)
-    self.writers << saved
-  end
-  
-  self.save!
-end
-  
+    self.title = hash["title"]
+    self.rating = hash["rating"]
+    self.votes = hash["votes"]
+    self.plot = hash["plot"]
+    self.tagline = hash["tagline"]
+    self.runtime = hash["runtime"]
+    self.top250 = hash["top250"]
+    self.year = hash["year"]
+    self.picture_path = hash["picture_path"]
+    self.complete = 1
+    
+    hash["recomendations"].collect do |r| 
+      saved = Recomendation.first_or_create({:imdbid => r["imdbid"]})
+      saved.update(r)
+      self.recomendations << saved
+    end
+    
+    hash["cast"].collect do |r| 
+      saved = Character.first_or_create({:imdbid => r["imdbid"]})    
+      saved.update(r)
+      saved.set_actor_imdbid
+      self.characters << saved
+    end
+    
+    hash["directors"].collect do |r| 
+      saved = Director.first_or_create({:imdbid => r["imdbid"]})
+      saved.update(r)
+      self.directors << saved
+    end
+    
+    hash["genres"].collect do |r| 
+      saved = Genre.first_or_create({:description => r, :url => "http://www.imdb.com/genre/#{r}"})
+      self.genres << saved
+    end
+    
+    hash["writers"].collect do |r| 
+      saved = Writer.first_or_create({:imdbid => r["imdbid"]})
+      saved.update(r)
+      self.writers << saved
+    end
+    
+    self.save!
+  end  
 end

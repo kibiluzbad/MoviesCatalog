@@ -7,9 +7,8 @@ development:
   #timeout: 5000
   adapter: mysql
   database: movies_catalog_dev
-  encoding: utf8
-  username: desenv
-  password: desenv
+  username: root
+  password: password
   host: localhost
 
 # Warning: The database defined as "test" will be erased and
