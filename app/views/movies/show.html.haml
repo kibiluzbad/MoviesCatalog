@@ -17,7 +17,7 @@
       %br
       = "#{@movie.rating} / #{@movie.votes}"
 
-    - unless @movie.top250 == 0
+    - unless @movie.top250.nil? || @movie.top250 == 0
       %h3 Top250
       %p= "##{@movie.top250}"
 
