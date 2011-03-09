@@ -1,5 +1,5 @@
 %article.movie
-  = link_to(image_tag("http://spieglein.heroku.com/#{movie.imdbid}/small",{:class=>"movie_img"}),movie) unless movie.picture_path.nil?
+  = link_to(image_tag("http://spieglein.heroku.com/#{movie.imdbid}",{:class=>"movie_img"}),movie) unless movie.picture_path.nil?
   .data
     %h3.title
       = link_to "#{movie.title} - #{movie.year}", movie
