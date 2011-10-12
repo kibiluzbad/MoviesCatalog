@@ -1,0 +1,10 @@
+- @title = "- Whislist - #{@whishlist.name}"
+%p#notice= notice
+
+%p
+  %b Name:
+  = @whishlist.name
+
+= link_to 'Edit', edit_whishlist_path(@whishlist)
+\|
+= link_to 'Back', whishlists_path
