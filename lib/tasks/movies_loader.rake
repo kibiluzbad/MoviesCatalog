@@ -4,9 +4,11 @@ namespace :movies do
 	  provider = Thoth.new
 	  movie = Movie.create!({:download_name => args.query, :complete => false})
 	  movies = provider.search(args.query)
-	  
-	  if( 1 == movies.select{|m| !m["imdbid"].nil?}.count)
-    
+	  completed = movies.select{|m| !m["imdbid"].nil?}
+    unique = completed.uniq{|m| m["imdbid"].to_s.strip!}
+	
+	  if( 1 == unique.count)
+      create_movie(unique.first["imdbid"])
     end
 	  #puts movies
 	  #puts movies.select{|m| !m["imdbid"].nil?}.count
@@ -15,17 +17,20 @@ namespace :movies do
 	
 	desc "Search for movie using the movie provider by imdbid."	
 	task :get, [:imdbid] => :environment do |t,args|
-    
-	  provider = Thoth.new
-	  movie = provider.get_movie(args.imdbid)
+    create_movie(args.imdbid)	  
+	end
+
+  def create_movie(imdbid)
+    provider = Thoth.new
+	  movie = provider.get_movie(imdbid)
 	  if(movie["error"].nil?)
-	    m = Movie.first_or_create({:imdbid => args.imdbid})
+	    m = Movie.first_or_create({:imdbid => imdbid})
 	    m.update_from(movie)
       puts "Movie #{m.title} saved!"
     else
       puts "Movie not saved!"
     end
-	end
+  end
 	
 	desc "Load movies from hash."
 	task :load => :environment do

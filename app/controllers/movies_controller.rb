@@ -14,6 +14,16 @@ class MoviesController < ApplicationController
     @movie = Movie.get(params[:id])
   end
   
+  def create
+  	#TODO: Search for 
+  end
+  
+  def destroy
+  	body
+  end
+  
+  
+  
   private
   def parse(query)
     hash = {}
