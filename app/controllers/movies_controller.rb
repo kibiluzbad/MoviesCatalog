@@ -1,4 +1,6 @@
 class MoviesController < ApplicationController
+include MoviesService
+
   def index
     @query = params[:query]
     @movies = Movie.top10 if @query.nil? || @query.empty?    
@@ -15,14 +17,15 @@ class MoviesController < ApplicationController
   end
   
   def create
-  	#TODO: Search for 
+    create_movies params["movies"] if params["movies"]
+    search_by_name params[:movie][:name] if params[:movie]
+    render :layout => false, :json => "success"
   end
   
   def destroy
-  	body
+  	movie = Movie.first_by_imdb(params[:imdb])
+    movie.destroy
   end
-  
-  
   
   private
   def parse(query)
@@ -42,5 +45,9 @@ class MoviesController < ApplicationController
     return "#{key}s.name.like" if key == "director" || key == "writer"
     return "#{key}s.description.like" if key == "genre"
     return "#{key}.like" if key == "year"
+  end
+
+  def create_movies(movies = [])
+    movies.each{|m| search_by_name m[1]["name"] }
   end
 end

@@ -5,6 +5,7 @@ MoviesCatalog::Application.routes.draw do
 
   root :to => "movies#index", :only => [:index]
   resources :movies, :only => [:index,:show]
+  post 'movies/new' => 'movies#create'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
