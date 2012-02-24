@@ -1,5 +1,5 @@
 class MoviesController < ApplicationController
-include MoviesService
+  include MoviesService
 
   def index
     @query = params[:query]
@@ -17,14 +17,16 @@ include MoviesService
   end
   
   def create
-    create_movies params["movies"] if params["movies"]
-    search_by_name params[:movie][:name] if params[:movie]
-    render :layout => false, :json => "success"
+    create_movies params["names"] if params["names"]
+    search_by_name params["name"] if params["name"]
+    render :layout => false, :json => {:result => "success"}
   end
   
   def destroy
-  	movie = Movie.first_by_imdb(params[:imdb])
-    movie.destroy
+  	raise "No name to delete was informed." unless params[:name]
+  	
+  	movie = Movie.first_by_downloaded_name(params[:name])
+    movie.destroy if movie
   end
   
   private
@@ -48,6 +50,6 @@ include MoviesService
   end
 
   def create_movies(movies = [])
-    movies.each{|m| search_by_name m[1]["name"] }
+    movies.each{|m| search_by_name m }
   end
 end
